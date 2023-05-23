@@ -39,7 +39,7 @@ module.exports = {
         .addStringOption(option =>
             option
                 .setName('jugador')
-                .setDescription('Ingresa el nombre del jugador que buscas Ej: Stephen ')
+                .setDescription('Ingresa el nombre del jugador que buscas Ej: stephen')
                 .setRequired(true)
         ),
     async execute(interaction) {
