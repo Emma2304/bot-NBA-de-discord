@@ -9,7 +9,7 @@ const getPlayer = async () => {
 };
 
 const createEmbed = async (filteredPlayer, salario) => {
-    console.log(filteredPlayer);
+    //console.log(filteredPlayer);
     const image = filteredPlayer.PhotoUrl;
     const exampleEmbed = new EmbedBuilder()
         .setColor([220, 28, 28])
@@ -46,10 +46,10 @@ module.exports = {
         try {
             await interaction.deferReply();
             const playerData = await getPlayer();
-            const base = interaction.options.getString('jugador');
+            const base = interaction.options.getString('jugador').toLowerCase();
             players = [...playerData];
-            const filteredPlayer = players.find(player => player.FirstName === base);
-            console.log(filteredPlayer);
+            const filteredPlayer = players.find(player => player.FirstName.toLowerCase() === base);
+            //console.log(filteredPlayer);
             const number = filteredPlayer.Salary;
             const salario = new Intl.NumberFormat('de-US', { style: 'currency', currency: 'USD' }).format(number);
             const embed = await createEmbed(filteredPlayer, salario);
